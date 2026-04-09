@@ -28,14 +28,16 @@ const images = [
 const gallery = document.querySelector('ul.gallery');
 
 for (let image_n = 0; image_n < images.length / 2; image_n++) {
-  const listItem = document.createElement('li');
+  const fragment = document.createDocumentFragment();
 
   for (let i = 0; i < 2; i++) {
+    const listItem = document.createElement('li');
     const imageElement = document.createElement('img');
     imageElement.src = images[image_n * 2 + i].url;
     imageElement.alt = images[image_n * 2 + i].alt;
     imageElement.width = '600';
     listItem.appendChild(imageElement);
+    fragment.appendChild(listItem);
   }
-  gallery.append(listItem);
+  gallery.appendChild(fragment);
 }
